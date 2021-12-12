@@ -1,0 +1,41 @@
+﻿@model FORUM_WEB.Models.ReportModel
+@{
+    ViewBag.Title = "ReportPage";
+    Layout = "~/Views/Shared/_forumWebLayout.cshtml";
+}
+@section styles{
+    <style>
+
+    </style>
+} 
+<div class="report-form" style="background-color: white; margin-top: 30px;">
+    @using (Html.BeginForm("ReportPage","ReportPage")) {
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td colspan="3" style="text-align: center; font-size: 25px; color: #e74c3c;">Report Form</td>
+                </tr>
+                <tr>
+                    <td>Nội dung:</td>
+                    <td>
+                        <div class="input-report">
+                            @Html.TextAreaFor(Model => Model.NoiDung, htmlAttributes: new { cols = "50", rows = "4", style = "resize: none; width: 100%;", @placeholder = "Vui lòng nhập đầy đủ lý do và tên người cần báo cáo để chúng mình giải quyết một cách nhanh nhất nhé !" })
+                            @Html.ValidationMessageFor(Model => Model.NoiDung)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div class="button-save">
+                            <button type="submit" class="btn btn-secondary">Gửi</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    }
+</div>
+
+@section scripts{
+
+}
