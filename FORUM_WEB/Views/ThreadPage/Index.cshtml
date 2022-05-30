@@ -1,5 +1,8 @@
 ﻿
-@model List<FORUM_WEB.Models.FrameWork.BaiDang>
+@*@model List<FORUM_WEB.Models.FrameWork.BaiDang>*@
+@model PagedList.IPagedList<FORUM_WEB.Models.FrameWork.BaiDang>
+@using PagedList.Mvc
+@using PagedList
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_forumWebLayout.cshtml";
@@ -26,6 +29,9 @@
         .question {
             border-bottom: solid 1px #d3d5d7;
         }
+        .navigate > a{
+            color: white;
+        }
     </style>
 }
 
@@ -45,38 +51,51 @@
                 <h4 style="color: white; font-weight: 400;">@TieuDe</h4>
             </div>
         }
-        <div class="thread-func">
-            <div class="navigation-page">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            @{ 
+    <div class="thread-func">
+        <div class="navigation-page">
+            <div style="">
+                @if ((Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) == 1)
+                {
+                    <div style="margin: 10px; float: left; ">
 
-            }
-            <div class="post-thread">
-                <button type="button" class="btn btn-danger btn-post">
-                    <ion-icon name="create-outline"></ion-icon>
-                    <a href="@Url.Action("PostThread", "PostPage", new {id = ViewBag.id_cd})" style="color: white; text-decoration: none;"><span>Post Thread</span></a>
-                </button>
+                    </div>
+                }
+                else
+                {
+                    <div style="margin: 10px; float: left">
+                        @Html.ActionLink("<<", "Index", new { page = 1 }, new { @style = "color:white;" })
+                    </div>
+                    <div style="margin: 10px; float: left ">
+                        <a style="color: white;" href="@Url.Action("Index",new { page = (Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber - 1) })"> @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber -1 )</a>
+                    </div>
+                }
+                <div style="margin: 10px; float: left;color:#ff3838 ">
+                    @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+                </div>
+                @if ((Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) == Model.PageCount)
+                {
+                    <div style="margin: 10px; float: left ">
+
+                    </div>
+                }
+                else
+                {
+                    <div style="margin: 10px; float: left ">
+                        <a style="color: white;" href="@Url.Action("Index",new { page = (Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber + 1) })"> @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber +1 )</a>
+                    </div>
+                    <div style="margin: 10px; float: left ">
+                        @Html.ActionLink(">>", "Index", new { page = Model.PageCount}, new {@style = "color:white;" })
+                    </div>
+                }
             </div>
         </div>
+        <div class="post-thread">
+            <button type="button" class="btn btn-danger btn-post">
+                <ion-icon name="create-outline"></ion-icon>
+                <a href="@Url.Action("PostThread", "PostPage", new {id = ViewBag.id_cd})" style="color: white; text-decoration: none;"><span>Post Thread</span></a>
+            </button>
+        </div>
+    </div>
     </div>
 </div>
 <div class="container" style=" margin-top: 20px; background-color: #ebeced;">

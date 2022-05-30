@@ -70,14 +70,13 @@
         {
             @Html.TextBoxFor(Model => Model.TenDangNhap, new { @placeholder = "UserName", @autofocus = "autofocus" })
             @Html.ValidationMessageFor(Model => Model.TenDangNhap)
-            @Html.PasswordFor(Model => Model.MatKhau, new { @placeholder = "UserName" })
+            @Html.PasswordFor(Model => Model.MatKhau, new { @placeholder = "PassWord" })
             @Html.ValidationMessageFor(Model => Model.MatKhau)
             <input type="submit" name="name" value="Login" style="background-color: #5c7099; color: white" />
             <p class="message">Not registered? <a href="@Url.Action("Register","Register")">Create an account</a></p>
         }
     </div>
 </div>
-
 @section scripts{
     @Scripts.Render("~/bundels/jqueryval")    
 }

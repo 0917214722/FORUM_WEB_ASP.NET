@@ -29,5 +29,21 @@ namespace FORUM_WEB.Controllers
             db.SaveChanges();
             return Redirect(Request.UrlReferrer.ToString());
         }
+        public ActionResult Ranking()
+        {
+            var lst = new List<Models.FrameWork.TaiKhoan>();
+            Models.FrameWork.FORUM_WEBEntities db = new Models.FrameWork.FORUM_WEBEntities();
+            //lst = db.TaiKhoan.ToList();
+            lst = db.TaiKhoan.OrderByDescending(x => x.BaiDang.Count).ToList();
+            //var cnt = db.TaiKhoan.ToList().OrderByDescending(x => x.BaiDang.Count);
+            //ViewBag.ok = cnt;
+            return View(lst);
+        }
+        public ActionResult Other(string tenDangNhap)
+        {
+            Models.FrameWork.FORUM_WEBEntities db = new Models.FrameWork.FORUM_WEBEntities();
+            var user = db.TaiKhoan.Where(x => x.TenDangNhap == tenDangNhap).FirstOrDefault();
+            return View(user);
+        }
     }
 }

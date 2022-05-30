@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Ranking";
+    Layout = "~/Views/Shared/_forumWebLayout.cshtml";
+}
+@model List<FORUM_WEB.Models.FrameWork.TaiKhoan>
+@{
+    var session = (UserLogin)Session[FORUM_WEB.Common.CommonSession.USER_LOGIN];
+}
+@section styles{
+    <style>
+        .user-avatar {
+            display: flex;
+            align-items: center;
+            /* justify-content: center; */
+        }
+
+            .user-avatar > img {
+                height: 100px;
+                width: 100px;
+                border-radius: 50%;
+            }
+
+        .button-save {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .button-save > button {
+                width: 170px;
+                height: 55px;
+            }
+    </style>
+}
+
+
+<h2 style="text-align: center; color: white;">Leaderboard</h2>
+
+
+<div class="container">
+
+    <table class="table table-bordered table table-hover" style="color: white;">
+        <thead>
+            <tr>
+                <th>Tên đăng nhập</th>
+                <th>Số lượng bài đăng</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item2 in Model)
+            {
+                <tr>
+                    @*<td>@item2.TenDangNhap</td>*@
+                    @*<td><span><a href="@Url.Action("Other","ProfilePage", new {tenDangNhap = @item2.TenDangNhap})" style="color: white; text-decoration:none;">@item2.TenDangNhap</a></span> </td>*@
+                    @{ if (@item2.TenDangNhap != @session.TenDangNhap)
+                        {
+                            <td><span><a href="@Url.Action("Other", "ProfilePage", new { tenDangNhap = @item2.TenDangNhap })" style="text-decoration: none; color: #add8e6; font-weight: 700;">@item2.TenDangNhap</a></span></td>
+
+                        }
+                        else
+                        {
+                            <td><span><a href="@Url.Action("ProfileUser","ProfilePage", new {tenDangNhap = session.TenDangNhap})" style="text-decoration: none; color: #add8e6; font-weight: 700;">@session.TenDangNhap</a></span></td>
+                        }
+                    }
+
+                    <td>@item2.BaiDang.Count()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

@@ -66,7 +66,17 @@
         <div class="user-question">
             <div><ion-icon name="person-outline" style="color:#89918b;"></ion-icon></div>
             <div class="user-name">
-                <a href="#"><span style="color: #89918b;">@Model.TenDangNhap</span></a>
+                @*<a href="#"><span style="color: #89918b;">@Model.TenDangNhap</span></a>*@
+                @{ if (@Model.TenDangNhap != @session.TenDangNhap)
+                    {
+                        <span><a href="@Url.Action("Other", "ProfilePage", new { tenDangNhap = @Model.TenDangNhap })" style="color: white; text-decoration:none;">@Model.TenDangNhap</a></span>
+
+                    }
+                    else
+                    {
+                        <span><a href="@Url.Action("ProfileUser","ProfilePage", new {tenDangNhap = session.TenDangNhap})" style="color: white; text-decoration:none;">@session.TenDangNhap</a></span>
+                    }
+                }
             </div>
         </div>
     </div>
@@ -79,7 +89,17 @@
                     <img src="~/Asset/img/@Model.TaiKhoan.Avatar" alt="">
                 </div>
                 <div class="user-name2">
-                    <a href="#"><span style="text-decoration: none; color: #3c497c; font-weight: 700;">@Model.TenDangNhap</span></a>
+                    @*<a href="#"><span style="text-decoration: none; color: #3c497c; font-weight: 700;">@Model.TenDangNhap</span></a>*@
+                    @{ if (@Model.TenDangNhap != @session.TenDangNhap)
+                        {
+                            <span><a href="@Url.Action("Other", "ProfilePage", new { tenDangNhap = @Model.TenDangNhap })" style="text-decoration: none; color: #3c497c; font-weight: 700;">@Model.TenDangNhap</a></span>
+
+                        }
+                        else
+                        {
+                            <span><a href="@Url.Action("ProfileUser","ProfilePage", new {tenDangNhap = session.TenDangNhap})" style="text-decoration: none; color: #3c497c; font-weight: 700;">@session.TenDangNhap</a></span>
+                        }
+                    }
                     <span style="color: #23374c; font-weight: 200;">Vip</span>
                 </div>
 
@@ -94,7 +114,7 @@
                     <span><a href="@Url.Action("ReportPage","ReportPage")">Report</a></span>
                 </div>
                 <div class="reply">
-                    <span><a href="#">Reply</a></span>
+                    <span><a href="#comment">Reply</a></span>
                 </div>
             </div>
         </div>
@@ -112,7 +132,17 @@
                     <img src="~/Asset/img/@session.Avatar" alt="">
                 </div>
                 <div class="user-name2">
-                    <a href="#"><span style="text-decoration: none; color: #3c497c; font-weight: 700;">@session.TenDangNhap</span></a>
+                    @*<a href="#"><span style="text-decoration: none; color: #3c497c; font-weight: 700;">@session.TenDangNhap</span></a>*@
+                    @{ if (@Model.TenDangNhap != @session.TenDangNhap)
+                        {
+                            <span><a href="@Url.Action("Other", "ProfilePage", new { tenDangNhap = @Model.TenDangNhap })" style="text-decoration: none; color: #3c497c; font-weight: 700;">@Model.TenDangNhap</a></span>
+
+                        }
+                        else
+                        {
+                            <span><a href="@Url.Action("ProfileUser","ProfilePage", new {tenDangNhap = session.TenDangNhap})" style="text-decoration: none; color: #3c497c; font-weight: 700;">@session.TenDangNhap</a></span>
+                        }
+                    }
                     <span style="color: #23374c; font-weight: 200;">Vip</span>
                 </div>
 

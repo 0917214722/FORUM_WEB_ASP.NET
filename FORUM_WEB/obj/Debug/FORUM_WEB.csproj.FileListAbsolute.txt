@@ -81,3 +81,7 @@ D:\ki1-nam3\Web nâng cao\FORUM_WEB\FORUM_WEB\FORUM_WEB\bin\EntityFramework.dll
 D:\ki1-nam3\Web nâng cao\FORUM_WEB\FORUM_WEB\FORUM_WEB\bin\EntityFramework.SqlServer.dll
 D:\ki1-nam3\Web nâng cao\FORUM_WEB\FORUM_WEB\FORUM_WEB\bin\EntityFramework.xml
 D:\ki1-nam3\Web nâng cao\FORUM_WEB\FORUM_WEB\FORUM_WEB\bin\EntityFramework.SqlServer.xml
+D:\ki1-nam3\Web nâng cao\FORUM_WEB\FORUM_WEB\FORUM_WEB\bin\PagedList.dll
+D:\ki1-nam3\Web nâng cao\FORUM_WEB\FORUM_WEB\FORUM_WEB\bin\PagedList.Mvc.dll
+D:\ki1-nam3\Web nâng cao\FORUM_WEB\FORUM_WEB\FORUM_WEB\bin\PagedList.xml
+D:\ki1-nam3\Web nâng cao\FORUM_WEB\FORUM_WEB\FORUM_WEB\bin\PagedList.Mvc.xml

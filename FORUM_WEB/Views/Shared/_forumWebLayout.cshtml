@@ -180,14 +180,17 @@
             height: 20px;
             background-color: #e2e3e5;
         }
-
+        .middle{
+            min-height: 500px;
+        }
         .site-footer {
             background-color: #26272b;
             padding: 45px 0 20px;
             font-size: 15px;
             line-height: 24px;
             color: #737373;
-            margin-top: 30px
+            margin-top: 30px;
+            min-height: 200px;
         }
 
             .site-footer hr {
@@ -358,11 +361,11 @@
                     <div class="collapse navbar-collapse"
                          id="navcol-1">
                         <!-- <ul class="nav navbar-nav">
-            <li class="nav-item" role="presentation"><a class="nav-link" href="#">Link</a></li>
-            <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Dropdown </a>
-                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
-            </li>
-        </ul> -->
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#">Link</a></li>
+                            <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Dropdown </a>
+                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                            </li>
+                        </ul> -->
                         <form class="form-inline mr-auto" target="_self">
                         </form>
 
@@ -374,8 +377,13 @@
                         else
                         {
                             <div>
-                                <span>Xin chào: </span><span><a href="@Url.Action("ProfileUser","ProfilePage", new {tenDangNhap = session.TenDangNhap})" style="color: white; text-decoration:none;">@session.TenDangNhap</a></span>
-                                <span>@Html.ActionLink("Đăng Xuất", "Logout", "Login")</span>
+                                <div>
+                                    <span>Xin chào: </span><span><a href="@Url.Action("ProfileUser","ProfilePage", new {tenDangNhap = session.TenDangNhap})" style="color: white; text-decoration:none;">@session.TenDangNhap</a></span>
+                                    <span>@Html.ActionLink("Đăng Xuất", "Logout", "Login")</span>
+                                </div>
+                                <div>
+                                    <a href="@Url.Action("Ranking","ProfilePage")" style="color: white;">Bảng xếp hạng</a>
+                                </div>
                             </div>
                         }
 
@@ -386,7 +394,9 @@
         </div>
         <div class="container-fluid hrline"></div>
     </header>
-    @RenderBody()
+    <div class="middle">
+        @RenderBody()
+    </div>
     <footer class="site-footer">
         <div class="container">
             <div class="row">
